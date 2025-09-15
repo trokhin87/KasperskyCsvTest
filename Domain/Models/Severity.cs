@@ -2,5 +2,8 @@
 
 public enum Severity
 {
-    
+    Critical,
+    High,
+    Normal,
+    Low
 }
