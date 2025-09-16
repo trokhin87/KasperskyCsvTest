@@ -25,4 +25,5 @@ public class WeightedRandom<T>
         int value = _random.Next(0, _totalWeight);
         return _items.First(i => value < i.CumulativeWeight).Item;
     }
+
 }
