@@ -2,5 +2,5 @@
 
 public interface IGenerateVersion
 {
-    string Generate(string product);
+    string Generate();
 }

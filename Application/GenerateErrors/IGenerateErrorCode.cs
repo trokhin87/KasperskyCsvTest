@@ -4,5 +4,5 @@ namespace Application;
 
 public interface IGenerateErrorCode
 {
-    string Generate(string product, Severity severity);
+    string Generate(string versionString);
 }
