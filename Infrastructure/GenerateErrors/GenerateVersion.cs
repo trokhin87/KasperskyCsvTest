@@ -42,18 +42,13 @@ public class GenerateVersion:IGenerateVersion
 
     }
 
-    public string Generate()
+    public string Generate(string product)
     {
-        var products = _generatedProducts.GetAllProducts();
         var sb = new StringBuilder();
-        foreach (var product in products)
-        {
-            
             var version = _picker.Pick();
             sb.Append(product);
             sb.Append(version);
             sb.Append(" ");
-        }
 
         return sb.ToString().Trim();
     }

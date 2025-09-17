@@ -4,5 +4,5 @@ namespace Application;
 
 public interface IErorRecordGenerator
 {
-    ErrorRecord Generate();
+    IEnumerable<ErrorRecord> Generate();
 }

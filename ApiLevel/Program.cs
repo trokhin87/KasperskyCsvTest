@@ -21,6 +21,8 @@ builder.Services.AddSingleton<IStoreService, StoreService>();
 builder.Services.AddSingleton<IGeneratorService,GeneratorService >();
 builder.Services.AddSingleton<IAgregationService, AggregationService>();
 
+builder.Services.AddSingleton<CsvFileService>();
+
 builder.Services.AddControllers();
 var app = builder.Build();
 app.MapControllers();

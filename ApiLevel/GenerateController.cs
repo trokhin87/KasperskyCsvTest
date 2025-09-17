@@ -19,6 +19,7 @@ public class GenerateController:ControllerBase
     public async Task<IActionResult> Generate(int count = 10000)
     {
         var id = await _generatorService.GenerateAsync(count);
-        return Ok(new { Id = id, Message = $"{count} records generated" });
+        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", $"{id}.csv");
+        return Ok(new { Id = id,File=filePath, Message = $"{count} records generated" });
     }
 }

@@ -1,11 +1,13 @@
-﻿using Domain.Models;
+﻿using Application.DTO;
+using Domain.Models;
 
 namespace Application;
 
 public interface IAgregationService
 {
-    Task<IEnumerable<(Severity severity,int count)>>AggregateBySeverityAsync(Guid Id);
-    Task<IEnumerable<(string product,string version,int count)>>AggregateByProductandVersionAsync(Guid Id);
-    Task<IEnumerable<(DateTime Hour, string Product, string Version, string ErrorCode, int Count)>> MaxErrorCodePerHourAsync(Guid id);
-    Task<IEnumerable<(string ErrorCode, int count)>> AggregateByErrorcodeAsync(Guid id, int top=10);
+    Task<IEnumerable<SeverityAggregationDto>>AggregateBySeverityAsync(Guid Id);
+    Task<IEnumerable<ProductVersionAggregationDto>>AggregateByProductandVersionAsync(Guid Id);
+    Task<IEnumerable<ErrorCodeHourAggregationDto>> MaxErrorCodePerHourAsync(Guid id);
+    Task<IEnumerable<ErrorCodeAggregationDto>> AggregateByErrorcodeAsync(Guid id, int top=10);
+    Task<string> SaveAggregationToCsvAsync<T>(IEnumerable<T> aggregation, string fileName);
 }

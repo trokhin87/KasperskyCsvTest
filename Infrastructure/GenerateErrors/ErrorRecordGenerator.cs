@@ -25,27 +25,27 @@ public class ErrorRecordGenerator:IErorRecordGenerator
         _errorCodeGenerator = errorCodeGenerator;
     }
 
-    public ErrorRecord Generate()
+    public IEnumerable<ErrorRecord> Generate()
     {
-        // Генерируем timestamp
         var timestamp = _timeGenerator.Generate(DateTime.Now);
-
-        // Генерируем severity
         var severity = _severityGenerator.Generate();
+        var products = _productGenerator.GetAllProducts().ToList();
 
-        // Генерируем продукт + версии
-        var versionString = _versionGenerator.Generate(); // например "A1.1 B2.5 C1.0 D2.3"
-
-        // Генерируем error code для каждой версии
-        var errorCodeString = _errorCodeGenerator.Generate(versionString); 
-        // например "A1.1-ERR42 B2.5-ERR7 C1.0-ERR15 D2.3-ERR99"
-
-        return new ErrorRecord
+        var records = new List<ErrorRecord>();
+        foreach (var product in products)
         {
-            Timestamp = timestamp,
-            Severity = severity,
-            Version = versionString,
-            ErrorCode = errorCodeString
-        };
+            var version = _versionGenerator.Generate(product); // версия для конкретного продукта
+            var errorCode = _errorCodeGenerator.Generate(version); // error для этой версии
+            records.Add(new ErrorRecord
+            {
+                Timestamp = timestamp,
+                Severity = severity,
+                Product = product,
+                Version = version,
+                ErrorCode = errorCode
+            });
+        }
+
+        return records;
     }
 }
