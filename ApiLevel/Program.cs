@@ -7,8 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
+builder.Services.AddSwaggerGen(c =>
+{
+    c.EnableAnnotations();
+});
 var date = DateOnly.FromDateTime(DateTime.Now);
 builder.Services.AddSingleton<IGenerateTime>(sp=>new GenerateTime(date));
 builder.Services.AddSingleton<IGenerateSeverity, GenerateSeverity>();
