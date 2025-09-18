@@ -16,7 +16,7 @@ public class GenerateController:ControllerBase
         _generatorService = generatorService;
     }
     
-    [HttpPost("Generate")]
+    [HttpPost("")]
     [SwaggerOperation(
         Summary = "Генерация CSV файла",
         Description = "Создает CSV-файл с 10 000 случайных ошибок (Timestamp, Severity, Product, Version, ErrorCode)"
