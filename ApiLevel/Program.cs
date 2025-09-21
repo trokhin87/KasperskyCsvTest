@@ -11,6 +11,9 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.EnableAnnotations();
 });
+
+builder.Logging.AddDebug();
+
 var date = DateOnly.FromDateTime(DateTime.Now);
 builder.Services.AddSingleton<IGenerateTime>(sp=>new GenerateTime(date));
 builder.Services.AddSingleton<IGenerateSeverity, GenerateSeverity>();
@@ -25,7 +28,12 @@ builder.Services.AddSingleton<IAgregationService, AggregationService>();
 
 builder.Services.AddSingleton<CsvFileService>();
 
+
 builder.Services.AddControllers();
+
+
+
+
 var app = builder.Build();
 app.MapControllers();
 if (app.Environment.IsDevelopment())
