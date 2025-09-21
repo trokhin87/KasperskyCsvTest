@@ -111,7 +111,7 @@ POST /api/Generate
 
 - .NET 8 (ASP.NET Core Web API)
 
-- DI + Logger (Microsoft.Extensions.Logging)
+- DI
 
 **Память:**
 
