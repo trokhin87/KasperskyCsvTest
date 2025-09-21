@@ -55,6 +55,7 @@
 ```
 git clone https://github.com/trokhin87/KasperskyCsvTest.git
 ```
+или же просто разархивировать 
 
 ### 2.Запустить сервис
 ```
