@@ -13,9 +13,10 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.EnableAnnotations();
 });
-builder.Logging.ClearProviders();
-builder.Logging.AddConsole();
-builder.Logging.AddDebug();
+// builder.Logging.ClearProviders();
+// builder.Logging.AddConsole();
+// builder.Logging.AddDebug();
+
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Information()
     .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning) 
